@@ -28,6 +28,7 @@ mag = (np.sqrt(u**2 + v**2 + w**2))
 # plt.axis('square')
 # plt.show()
 
+
 # ADD CAMERA
 camera = pv.Camera()
 plotter.camera.position = (15, 15, 15)
