@@ -14,9 +14,9 @@ y = mesh.points[:, 1]
 x = mesh.points[:, 2]
 x.shape = y.shape = z.shape = 128, 128, 128
 
-w,v,u = mesh.point_data['w'], mesh.point_data['v'], mesh.point_data['u']
-# w.shape = v.shape = u.shape = mesh.dimensions
-mag = (np.sqrt(u**2 + v**2 + w**2))
+# w,v,u = mesh.point_data['w'], mesh.point_data['v'], mesh.point_data['u']
+# # w.shape = v.shape = u.shape = mesh.dimensions
+# mag = (np.sqrt(u**2 + v**2 + w**2))
 
 # 2D Slicing
 # sample = 5
@@ -30,26 +30,30 @@ mag = (np.sqrt(u**2 + v**2 + w**2))
 
 
 # ADD CAMERA
-camera = pv.Camera()
-plotter.camera.position = (15, 15, 15)
-plotter.camera.focal_point = (0,0,0)
-plotter.camera = camera
+# camera = pv.Camera()
+# plotter.camera.position = (15, 15, 15)
+# plotter.camera.focal_point = (0,0,0)
+# plotter.camera = camera
 
 
 # POINT CLOUD
-samp = 10
-points = mesh.points
-points = points[::samp]
+# samp = 10
+# points = mesh.points
+# points = points[::samp]
 
-vectors = np.vstack((w,v,u)).T
-vectors = vectors[::samp]
+# vectors = np.vstack((w,v,u)).T
+# vectors = vectors[::samp]
 
-point_cloud = pv.PolyData(points)
-point_cloud['vectors'] = vectors
-arrows = point_cloud.glyph(orient='vectors', scale=True, factor=0.15)
-plotter.add_mesh(point_cloud, point_size=2.5, render_points_as_spheres=True, opacity=0.4)
+# point_cloud = pv.PolyData(points)
+# point_cloud['vectors'] = vectors
+# arrows = point_cloud.glyph(orient='vectors', scale=True, factor=0.15)
+# plotter.add_mesh(point_cloud, point_size=2.5, render_points_as_spheres=True, opacity=0.4)
 # plotter.add_mesh(arrows)
-plotter.show()
+
+# STREAMLINES
+# point_cloud.streamlines_from_source(mesh)
+# plotter.add_mesh(point_cloud, point_size=2.5, render_points_as_spheres=True, opacity=0.4)
+# plotter.show()
 
 
 # VOLUME
