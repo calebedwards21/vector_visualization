@@ -21,6 +21,10 @@
 
 \maketitle
 
+\textbf{Github Repository} - \href{https://github.com/calebedwards21/vector_visualization}{https://github.com/calebedwards21/vector\_visualization}
+\\
+Note** - Code is on master branch and overleaf docs are on main branch
+
 \section*{Introduction}
 Most vector data is in 2 or 3D, which means most software represents vector data as 3D with z component as null.
 \\\\
@@ -46,7 +50,15 @@ Given a 3D vector field v, the \textbf{vorticity} of v (curl or rotor of $v^2$) 
     \textbf{rot v} = (\frac{\partial v_z}{\partial y} - \frac{\partial v_y}{\partial z}, \frac{\partial v_x}{\partial z} - \frac{\partial v_z}{\partial x}, \frac{\partial v_y}{\partial x} - \frac{\partial v_x}{\partial y})
 \end{equation}
 The vorticity vector characterizes the speed and direction of rotation of a given vector field at every point
-\\\\
+
+\begin{figure}[H]
+\caption{Tornado streamlines showing vorticity
+done in Paraview.}
+\centering
+\includegraphics[scale=.35]{tornado_vorticity_streamlines_pv.png}
+\end{figure}
+
+
 \textbf{Vortex} is a region where the vector field locally circles around a point called the \textbf{vortex center}. High divergence and high vorticity are typically complimentary. Cone shapes seem to be a good example of this. When applying curl and divergence metrics, the div rot v = 0 for any vector field v.
 \\\\
 \textbf{Turbulent Flows} : high number of vortices and the alternation of their spinning direction (fluid dynamics and aerodynamics). The \textbf{streamwise vorticity} is how quickly v turns itself around.
@@ -73,21 +85,27 @@ For 3D vector glyphs, resolution is a big problem. Subsampling is a good first a
 To summarize, this way of visualization is easy to implement and intuitive, but can have problems such as occlusion, subsampling artifacts, and poor visualization.
 
 \begin{figure}[H]
-\caption{Tornado contour plot with vector magnitude glyphs at z=0}
+\caption{Tornado contour plot with vector magnitude glyphs at z=0 with matplotlib}
 \centering
 \includegraphics[scale=0.55]{tornado_2d_contour_glyphs.png}
 \end{figure}
 
 \begin{figure}[H]
-\caption{Tornado contour plot with vector magnitude glyphs at z=64 or midpoint}
+\caption{Tornado contour plot with vector magnitude glyphs at z=64 or midpoint with matplotlib}
 \centering
 \includegraphics[scale=0.55]{tornado_2d_contour_mid.png}
 \end{figure}
 
 \begin{figure}[H]
-\caption{Magnitude glyph plot sub-sampled every 50 points }
+\caption{Magnitude glyph plot sub-sampled every 50 points with pyvista }
 \centering
 \includegraphics[scale=.4]{tornado_glyph_sample_50.png}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Tornado with glyphs of magnitude done in Paraview.}
+\centering
+\includegraphics[scale=.35]{tornado_glyphs_pv.png}
 \end{figure}
 
 % *************************** SECTION 6.3 *********************************
@@ -95,7 +113,7 @@ To summarize, this way of visualization is easy to implement and intuitive, but 
 \textbf{Vector Color Coding} - associates a color with every point of a given surface on which we have defined a vector dataset. Usually uses a HSV system for colors or aka a color wheel. Color encodes vector orientation and direction. Vector orientation is encoded in the hue and the vector length is encoded in the value. Extensive training is needed to interpret the inverse mapping from hue to vector orientation, especially when trying to decode 3D.
 
 \begin{figure}[H]
-\caption{Tornado vector color coded sampled every 10 points.}
+\caption{Tornado vector color coded sampled every 10 points with pyvista.}
 \centering
 \includegraphics[scale=.4]{tornado_color_coding.png}
 \end{figure}
@@ -166,9 +184,28 @@ Coverage of a Streamline - every dataset point should be a small distance away f
 The density of the streamlines in the final image should have a max and min. Longer streamlines are preferred over short ones.
 \\\\
 Dense streamline solutions - trace a streamline until it gets close to any other streamline or itself and have an iterative insertion of seed points in undersampled areas. Then can discard too short streamlines and try new seed points until average length is up. Good example of streamlines is in Figure 6.15.
-\\\\
+
+\begin{figure}[H]
+\caption{Tornado streamlines with 1000 seed points done in Paraview.}
+\centering
+\includegraphics[scale=.35]{tornado_streamlines_1000_points_pv.png}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Tornado streamlines with arrow glyphs done in Paraview.}
+\centering
+\includegraphics[scale=.35]{tornado_glyphs_streamlines_pv.png}
+\end{figure}
+
+
 \textbf{Stream Tubes} - In addition to plain lines, graphical shapes can be used with the streamlines. For 3D, undersampling is key to make the visualization understandable and less cluttered. A good example of a traced stream tube is in Figure 6.20.
-\\\\
+
+\begin{figure}[H]
+\caption{Tornado streamtubes done in Paraview.}
+\centering
+\includegraphics[scale=.35]{tornado_stream_tubes_pv.png}
+\end{figure}
+
 \textbf{Stream Ribbons} - Launch two streamlines close to each other. If the two streamlines stay relatively close to each other then the stream ribbon's twisting around its center curve gives a measure of the twisting of the vector field around the direction of advection. % Need to better understand advection
 \\\\
 \textbf{Stream Surfaces} - two dimensional, so easier to follow visually. Flow described by the vector field is always tangent to the surface. Need to be careful around high divergence. 
