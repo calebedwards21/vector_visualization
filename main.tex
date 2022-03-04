@@ -145,6 +145,19 @@ Still harder to interpret than vector glyphs. Figure 6.13 shows an example of a 
         \begin{itemize}
             \item Can use the streamline equation in 6.10 by creating a fixed time
             \item Compute the actual path in a time dependent vector field $\rightarrow \frac{dx(t)}{dt} = v(x(t), t)$
+            
+\begin{figure}[H]
+\caption{2d unsteady beads dataset with pathlines.}
+\centering
+\includegraphics[scale=.4]{beads_2d_pathlines_1.png}
+\end{figure}
+
+\begin{figure}[H]
+\caption{2d unsteady fourcenters dataset with pathlines.}
+\centering
+\includegraphics[scale=.4]{fourcenters_2d_pathlines.png}
+\end{figure}
+            
         \end{itemize}
         \item \textbf{Streaklines}
         \begin{itemize}
@@ -321,6 +334,28 @@ Attributes are data values that live on the point or cell of a mesh. In the case
 % Plot lines for time data
 % particle tracer/lines in paraview
 
-% Add to github repo
+
+% pathlines for timeseries
+% - particle tracer filter
+
+
+% ------ VTI -> TIMESERIES --------
+% Use Pyvista to write all the vti files and then load into paraview
+% OR
+% Use macros to edit script to save data
+
+% ------ CREATE MACROS ----------
+% Tools -> Start Trace
+% Load in files, perform transforms, etc.
+% Save data into beads folder
+% Tools -> Stop Trace
+% This creates a python script that you can store as a macro
+% Edit this to create all vti files for me with timeseries
+
+% ---------- TODO --------------
+% Need to get beads or fourcenters data into a timeseries for paraview and then
+% create pathlines based on that data using the particle trace filter
+% https://www.youtube.com/watch?v=Zmf8OE2N518&t=923s&ab_channel=TuxRiders
+% convert everything to jupyter notebooks
 
 \end{document}
